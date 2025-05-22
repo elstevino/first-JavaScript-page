@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial scale=10.0">
+    <title>Circle Area Calculator</title>
+    <script>
+        // This runs when the page loads
+        window.onload = function() {
+            // Ask the user for first name and store it in Fname
+            let Fname = prompt("Enter your first name:");
+
+            // Creates constant to store the value of Pi (to 7 significant digits)
+            const piValue = 3.1415926;
+
+            // user is required to input  favorite number to be used as radius
+            let myFavNum = prompt("Enter your favorite number:");
+            myFavNum = parseFloat(myFavNum); // Convert the input to a number
+
+            // Calculate the area of a circle using the formula A = πr²
+            let myArea = piValue * myFavNum * myFavNum;
+
+            // display message including all variables
+            let message = `Hello ${Fname}, you entered ${myFavNum} as your favorite number. `
+                        + `If that was the radius of a circle, the circle’s area would be ${myArea.toFixed(6)}.`;
+
+            // Output the message 
+            document.getElementById("output").innerText = message;
+        };
+    </script>
+</head>
+<body>
+    <h1>Welcome to the Circle Area Calculator</h1>
+    <p id="output">Loading...</p>
+</body>
+</html>
