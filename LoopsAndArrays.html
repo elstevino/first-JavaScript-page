@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Loops and Arrays</title>
+</head>
+<body>
+    <h1>JavaScript Program Basics</h1>
+    <div id="output"></div>
+
+    <script>
+        // For loop to count from 0 to 10 and check for odd/even
+        let output = document.getElementById("output");
+        for (let i = 0; i <= 10; i++) {
+            if (i % 2 === 0) {
+                output.innerHTML += `Count ${i} is even<br>`;
+            } else {
+                output.innerHTML += `Count ${i} is odd<br>`;
+            }
+        }
+
+        // Requesting the user for a number between 5 and 20
+        let myNum;
+        do {
+            myNum = parseInt(prompt("Please enter a number between 5 and 20:"));
+        } while (isNaN(myNum) || myNum < 5 || myNum > 20);
+
+        // Display loop counter until it equals myNum
+        let counter = 1;
+        do {
+            output.innerHTML += `Counter: ${counter}<br>`;
+            counter++;
+        } while (counter <= myNum);
+
+        //Storage of subjects in an array
+        const subjects = ["Accounting", "Algebra", "Programming", "Art", "Data Analytics"];
+
+        // Displaying the array values using forEach
+        output.innerHTML += "<h2>Subjects:</h2>";
+        subjects.forEach(subject => {
+            output.innerHTML += `${subject}<br>`;
+        });
+
+        // Display the array values separated by commas
+        output.innerHTML += `<h3>Subjects separated by commas:</h3> ${subjects.join(", ")}`;
+    </script>
+</body>
+</html>
