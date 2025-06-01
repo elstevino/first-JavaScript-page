@@ -12,7 +12,7 @@
     <script>
         // Function to verify service quality
         function verifyServiceQuality(quality) {
-            const validQualities = ['excellent', 'great', 'good', 'poor'];
+            const validQualities = ['great', 'ok', 'poor'];
             return validQualities.includes(quality.toLowerCase());
         }
 
@@ -25,13 +25,10 @@
         function calculateTip(amount, quality) {
             let tipPercentage;
             switch (quality.toLowerCase()) {
-		case 'excellent':
-		    tipPercentage = 0.25;
-		    break;
                 case 'great':
                     tipPercentage = 0.20;
                     break;
-                case 'good':
+                case 'ok':
                     tipPercentage = 0.15;
                     break;
                 case 'poor':
@@ -54,11 +51,11 @@
             output.innerHTML = "Invalid service amount. Please enter a value between $5.00 and $500.00.";
         } else {
             // Prompt user for service quality
-            let serviceQuality = prompt("How was the service? (excellent, great, good, poor):");
+            let serviceQuality = prompt("How was the service? (great, ok, poor):");
             
             // Verify service quality
             if (!verifyServiceQuality(serviceQuality)) {
-                output.innerHTML = "Invalid service quality. Please enter 'excellent', 'great', 'good', or 'poor'.";
+                output.innerHTML = "Invalid service quality. Please enter 'great', 'ok', or 'poor'.";
             } else {
                 // Calculate the tip
                 const tipAmount = calculateTip(serviceAmount, serviceQuality);
