@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fictional Dog Objects</title>
+</head>
+<body>
+    <h1>Fictional Dog Information</h1>
+    <div id="output"></div>
+
+    <script>
+        // Creating literal object named myDog for Scrappy-Doo
+        const myDog = {
+            name: "Scrappy-Doo",
+            show: "Scooby-Doo, Where Are You!",
+            breed: "Great Dane",
+            mySound: "I'm small but mighty! I'm ready to take on any monster!",
+            // Method for displaying information of the dog
+            displayInfo: function() {
+                return `Meet ${this.name}, a ${this.breed} from the show "${this.show}". ${this.mySound}`;
+            }
+        };
+
+        // Displaying information of the dog
+        const output = document.getElementById("output");
+        output.innerHTML += `<p>${myDog.displayInfo()}</p>`;
+
+        // creating another dog object using a constructor for Scrappy-Doo
+        function Dog(name, show, breed, canTalk) {
+            this.name = name;
+            this.show = show;
+            this.breed = breed;
+            this.canTalk = canTalk;
+            this.mySound = "I'm small but mighty! I'm ready to take on any monster!";
+            
+            // Method for greeting
+            this.myGreeting = function() {
+                return `Hello! I'm ${this.name} from "${this.show}". I'm a ${this.breed}. ${this.canTalk ? "I can talk!" : "I cannot talk."} And remember, ${this.mySound}`;
+            };
+        }
+
+        // Createing an instance of the dog
+        const myDogConst = new Dog("Scrappy-Doo", "Scooby-Doo, Where Are You!", "Great Dane", true);
+
+        // Calling the method for displaying the greeting
+        output.innerHTML += `<p>${myDogConst.myGreeting()}</p>`;
+    </script>
+</body>
+</html>
