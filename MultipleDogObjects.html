@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fictional Dog Objects</title>
+</head>
+<body>
+    <h1>Fictional Dog Information</h1>
+    <div id="allDogsOutput"></div>
+    <div id="selectedDogOutput"></div>
+
+    <script>
+        // Constructor function for dog objects
+        function Dog(name, show, breed, canTalk) {
+            this.name = name;
+            this.show = show;
+            this.breed = breed;
+            this.canTalk = canTalk;
+            this.mySound = "I'm a loyal companion ready for adventure!" //Default sound message of the dog object
+        }
+
+        // Greeting method using prototype
+        Dog.prototype.myGreeting = function () {
+            return `Hello! I'm ${this.name} from "${this.show}". I'm a ${this.breed}. ` +
+                   (this.canTalk ? "I can talk!" : "I cannot talk.") + 
+                   ` And remember, ${this.mySound}`;
+        };
+
+        // Creating dog objects
+        const brandy = new Dog("Brandy Harrington", "Brandy & Mr. Whiskers", "Golden Retriever", true);
+        const scooby = new Dog("Scooby-Doo", "Scooby-Doo Where Are You", "Great Dane", true);
+
+        // Overriding Scooby-Doo's mySound
+        scooby.mySound = "I'm small but mighty! I'm ready to take on any monster!";
+
+        const dogs = [brandy, scooby];
+
+        // Displaying all dog objects using for...in loop
+        const allDogsOutput = document.getElementById("allDogsOutput");
+
+        dogs.forEach(dog => {
+            allDogsOutput.innerHTML += `<h2>${dog.name}</h2>`;
+            for (let key in dog) {
+                if (typeof dog[key] !== 'function') {
+                    allDogsOutput.innerHTML += `<p><strong>${key}</strong>: ${dog[key]}</p>`;
+                }
+            }
+        });
+
+        // Prompting user to select a dog
+        const selectedDogName = prompt("Enter the name of the dog (Brandy Harrington or Scooby-Doo):");
+
+        const selectedDogOutput = document.getElementById("selectedDogOutput");
+
+        if (selectedDogName) {
+            const trimmedInput = selectedDogName.trim().toLowerCase();
+            const selectedDog = dogs.find(d => d.name.toLowerCase() === trimmedInput);
+
+            if (selectedDog) {
+                selectedDogOutput.innerHTML = `<h2>You selected: ${selectedDog.name}</h2>`;
+                selectedDogOutput.innerHTML += `<p>${selectedDog.myGreeting()}</p>`;
+            } else {
+                selectedDogOutput.innerHTML = `<p style="color:red;"><strong>Error:</strong> The dog you selected does not exist.</p>`;
+            }
+        } else {
+            selectedDogOutput.innerHTML = `<p style="color:orange;">No input provided.</p>`;
+        }
+    </script>
+</body>
+</html>
